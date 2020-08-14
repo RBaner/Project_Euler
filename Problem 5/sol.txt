@@ -1,0 +1,4 @@
+This problem can be solved without computation! By taking the
+largest instance of primes from each number 1-20 and taking
+the product we generate a number that is evenly divisible
+by all numbers 1-20
