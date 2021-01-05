@@ -1,4 +1,8 @@
+#This code is written by Rohit Banerjee (2020)
+#In reference to Project Euler problem 357
+
 import sympy
+import time
 
 def pgen(n,show=False):
     divisor_list = sympy.divisors(n)
