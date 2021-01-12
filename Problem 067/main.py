@@ -32,3 +32,7 @@ def sol(mat):
 #            print(totals)
         totals = temp
     return(max(totals))
+
+#driver code
+if __name__ == "__main__":
+    print(sol(get_triangle()))
