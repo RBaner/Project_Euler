@@ -17,3 +17,6 @@ def main():
             if isPalindrome(i*j) and (i*j)>=current:
                 current = i*j
     return(current)
+
+if __name__=='__main__':
+    print(main())
