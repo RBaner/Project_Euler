@@ -1,3 +1,4 @@
+#potential improvement in defining all pythagorean triples with a perimeter constraint and iterating over that instead
 import math
 
 def main(maximum):
