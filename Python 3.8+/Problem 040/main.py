@@ -1,11 +1,26 @@
-#current algorithm: loop all numbers while adding to count of digits
-#poptimization: formula to generate nth digit given that we know how many n-digit numbers exists for each n
-
 import math
 
-def main():
-    digit_catch = [10**i for i in range(0,7)]
-    count = 0
-    number = 0
+def bruteForceDigitCatch(n):
+    if n == 1:
+        return(1)
+    digit = 0
+    digit_count = 0
     while True:
-        if (count + math.log10(number) in digit_catch):
+        digit += 1
+        digit_count += int(math.log10(digit))+1
+        # print(digit)
+        # print(digit_count)
+        # print("++++++++++++++++++++++++++++++++++")
+        if n <= digit_count + int(math.log10(digit+1))+1:
+            return(int(str(digit+1)[n-digit_count-1]))
+
+def main():
+    catch = [10**i for i in range(7)]
+    digits = [bruteForceDigitCatch(i) for i in catch]
+    product = 1
+    for digit in digits:
+        product *= digit
+    return(product)
+
+if __name__=='__main__':
+    print(main())
