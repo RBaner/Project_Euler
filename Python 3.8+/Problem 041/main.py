@@ -2,7 +2,7 @@ from sympy import isprime
 from itertools import permutations
 import time
 
-digits = [int(i) for i in "123456789"]
+digits = [i for i in range(1,10)]
 
 def numFromList(listOfDigits: list) -> int:
     output = 0
