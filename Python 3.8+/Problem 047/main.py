@@ -7,11 +7,17 @@ import time
 def n_consec_n_distinct_prime_factors(n):
     window = [primefactors(i) for i in range(2,n+2)]
     current = 2
+    run = 0
     while True:
-        window[current%n] = primefactors(current)
-        if all([len(i) == n for i in window]):
-            return(current-(n-1))
-        current += 1 
+        current_factors = primefactors(current)
+        window[current%n] = current_factors
+        if len(current_factors) == n:
+            run +=1
+            if run == n:
+                return(current-(n-1))
+        else:
+            run = 0
+        current += 1
 
 def main():
     return(n_consec_n_distinct_prime_factors(4))
