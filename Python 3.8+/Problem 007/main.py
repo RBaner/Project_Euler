@@ -13,20 +13,22 @@ def isprime(n):
                 return(False)
         return(True)
 
-def main():
-    primes = [2,3,5]
-    while len(primes) <= 10001:
-        possible = primes[-1]
+def prime(n):
+    prime = 3
+    count = 2
+    while count < n:
+        possible = prime
         while True:
             possible += 1
             if isprime(possible):
-                primes.append(possible)
+                prime = possible
+                count+=1
                 break
             else:
                 continue
-    return(primes[10000])
+    return(prime)
     
 if __name__=="__main__":
     start = time.time()
-    print(main())
+    print(prime(10001))
     print(time.time()-start)
