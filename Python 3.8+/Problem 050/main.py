@@ -1,36 +1,27 @@
-# brute force "solution" but it doesn't actually finish running
-# maybe iterate over primes under n in descending order and
-# perform a variation of integer decomposition
+# A much prettier and faster solution but not fast by any means.
+# Potential optimizations: improve space complexity by working around storing primes up to n
+#                          improve time complexity by modulating offset and length intelligently to get the desired sum/determine sum not possible
 from sympy import isprime, prime, primerange
 import time
 
-def prime_sum(low,high):
-    primeSum = 0
-    for i in range(low,high+1):
-        primeSum += prime(i)
-    return(primeSum)
-
 def longest_prime_sum(n:int):
+    max_count = 0
     max_prime = 0
-    offset = 1
-    while prime(offset) < n:
-        length = 1
-        current_sum = 0
-        current_max = 1
-        while current_sum < n:
-            current_sum = prime_sum(offset,offset+length)
-            if isprime(current_sum) and current_sum > current_max:
-                if current_sum >= n:
-                    break
-                current_max = current_sum
-            length += 1
-        if current_max > max_prime:
-            max_prime = current_max
-            #print(f"New max: {max_prime}")
-            #print(f"offset: {offset}")
-            #print(f"length: {length}")
+    offset = 0
+    primes = [i for i in primerange(n)]
+    while True:
+        for length in range(max_count,len(primes[offset:])):
+            current_count = length-offset
+            current_sum = sum(primes[offset:length])
+            if current_sum > n:
+                if current_count < max_count:
+                    return(max_prime)
+                else: continue
+            elif isprime(current_sum):
+                if max_count < current_count:
+                    max_count = current_count
+                    max_prime = current_sum
         offset+=1
-    return(max_prime)
 
 def main():
     return(longest_prime_sum(10**6))
