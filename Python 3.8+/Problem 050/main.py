@@ -16,7 +16,7 @@ def longest_prime_sum(n:int):
             if current_sum > n:
                 if current_count < max_count:
                     return(max_prime)
-                else: continue
+                else: break
             elif isprime(current_sum):
                 if max_count < current_count:
                     max_count = current_count
