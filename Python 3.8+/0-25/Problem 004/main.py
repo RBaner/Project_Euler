@@ -1,3 +1,6 @@
+#runtime 0.3 -> 0.000998
+from time import time
+
 def isPalindrome(n):
     nstring = str(n)
     if len(nstring)%2==0:
@@ -11,12 +14,20 @@ def isPalindrome(n):
     return(True)
 
 def main():
-    current = 0
-    for i in range(100,1000):
-        for j in range(100,1000):
-            if isPalindrome(i*j) and (i*j)>=current:
-                current = i*j
-    return(current)
+    current_max = 0
+    for i in range(1000,100,-1):
+        if i*1000 < current_max:
+            return(current_max)
+        for j in range(1000,i,-1):
+            current = i*j
+            if (current)>=current_max:
+                if isPalindrome(current):
+                    current_max = current
+            else:
+                break
+    return(current_max)
 
 if __name__=='__main__':
+    start = time()
     print(main())
+    print(time()-start)
