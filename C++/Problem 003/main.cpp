@@ -29,18 +29,17 @@ void genPrimes(long n){
     }
 }
 
-int_fast32_t problem(long n){
+int_fast64_t problem(long& n){
     genPrimes(n);
-    uint_fast64_t max{0};
-    for(uint_fast64_t &prime: primes){
-        if(prime == 0 || (prime > static_cast<uint_fast64_t>(n))){
-            break;
+    while(n%2 == 0){n /= 2;}
+    uint_fast32_t largestFactor{3};
+    while(n != 1){
+        while(n%largestFactor == 0){
+            n /= largestFactor;
         }
-        else if ((n%prime == 0) && (prime > max)){
-            max = prime;
-        }
+        largestFactor += 2;
     }
-    return(max == 0? n : max);
+    return(largestFactor-2);
 }
 
 int main(){
