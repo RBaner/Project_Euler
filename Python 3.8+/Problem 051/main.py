@@ -1,16 +1,16 @@
-# working but incorrect
+# I hate digit replacement and will never touch this code again in my life unless under duress
 
 from itertools import combinations
 from math import log10
-from sympy import isprime
+from sympy import isprime,prime
 
 def findPrimeFamilySeed(n)->int:
-    found = False
-    current_num = 1
-    maximum = 0
+    current_prime_counter = 1
     while True:
+        current_num = prime(current_prime_counter)
         for r in range(1,int(log10(current_num))+1):
-            for indicies in combinations([i for i in range(int(log10(current_num))+1)],r):
+            for indicies in combinations([i for i in range(int(log10(current_num)))],r):
+                family = [1]*10
                 if int(log10(current_num)) in indicies:
                     break
                 run = 0
@@ -19,16 +19,14 @@ def findPrimeFamilySeed(n)->int:
                     for i in indicies:
                         current_num_string = current_num_string[:i] + str(digit) + current_num_string[i+1:]
                     if isprime(int(current_num_string)):
+                        family[digit] = int(current_num_string)
                         run += 1
                 if run == n:
-                    return(current_num)
-        current_num += 1
-
+                    return(min([i for i in family if i!=1]))
+        current_prime_counter += 1
 
 def main()->int:
-    return(findPrimeFamilySeed(7))
-
-    
+    return(findPrimeFamilySeed(8))
 
 if __name__=="__main__":
     from time import time
