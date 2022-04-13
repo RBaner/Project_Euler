@@ -5,11 +5,8 @@ import time
 def main():
     num = 3
     while True:
-        if num%2 == 0:
-            num += 1
-            continue
-        elif isprime(num):
-            num += 1
+        if isprime(num):
+            num += 2
             continue
         else:
             passed = False
@@ -19,7 +16,7 @@ def main():
                     break
             if passed== False:
                 return(num)
-            num+=1
+            num+=2
 
 if __name__=="__main__":
     start = time.time()
