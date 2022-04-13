@@ -19,10 +19,8 @@ def main() -> int:
             continue
         possible = [numFromList(permutation) for permutation in permutations(digits[:n])]
         possible = [number for number in possible if isprime(number)]
-        try: 
+        if len(possible) >= 1: 
             maximum.append(max(possible))
-        except Exception as e:
-            continue
     return(max(maximum))
 
 if __name__=="__main__":
