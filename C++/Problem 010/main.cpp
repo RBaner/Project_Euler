@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 
-bool isPrime(std::int_least32_t n){
+bool isPrime(std::int_least32_t& n){
 	if(n%2==0){
 		if(n==2){
 			return(true);
