@@ -24,6 +24,7 @@ def crackKey(debug=False):
         for i in range(127):
             if chr(num^i) == ' ':
                 keys.append(i)
+                break
     # decrypt message
     decrpyted_message = decrpyt(encrypted_messsage,keys)
     if debug:
