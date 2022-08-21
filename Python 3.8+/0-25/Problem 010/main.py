@@ -1,4 +1,3 @@
-from time import time
 from math import sqrt
 
 def isprime(n):
@@ -21,6 +20,7 @@ def main():
     return(sum)
 
 if __name__=="__main__":
-    start = time()
+    from time import perf_counter
+    start = perf_counter()
     print(main())
-    print(time()-start)
+    print(perf_counter()-start)
