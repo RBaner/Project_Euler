@@ -1,17 +1,13 @@
 from math import log10
+from itertools import count
 
 def main()->int:
-    num = 1
-    power = 1
-    match = set()
-    while True:
-        while int(log10((num+1)**power))+1 <= power:
-            if int(log10(num**power))+1 == power:
-                match.add(num)
-            if int(log10(2**power))+1 > power:
-                return(len(match))
-            num+=1
-        power+=1
+    res = 0
+    for power in count(1):
+        if int(log10(9**power))+1 == power-1:
+            return(res)
+        else:
+            res += len([int(log10(num**power))+1 for num in range(1,10) if int(log10(num**power))+1 == power])
 
 if __name__=="__main__":
     from time import perf_counter
