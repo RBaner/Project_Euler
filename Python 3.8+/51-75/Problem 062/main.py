@@ -1,3 +1,6 @@
+# Lesson: Avoid making ALL permutatiobs whenever possible
+# Potential improvement: rework to avoid all the string<->int conversions
+
 from itertools import permutations
 from math import log10
 
@@ -13,17 +16,12 @@ def power_permutations(power: int,num_of_permutations: int) -> int:
     current_powers = []
     num = 1
     while True:
-        print("++++++++++++++++")
-        print(num)
         while int(log10(num**power)) == int(log10((num+1)**power)):
             current_powers.append(num**power)
             num += 1
-            print(num)
-        current_powers.append(num**power)    
-        print(current_powers)
+        current_powers.append(num**power)
         while current_powers:
-            #print(len(current_powers))
-            perms = set([list_to_int(i) for i in permutations([int(i) for i in str(current_powers[0])]) if list_to_int(i) in current_powers])
+            perms = [i for i in current_powers if sorted(list(str(i))) == sorted(list(str(current_powers[0])))]
             if not perms:
                 current_powers.remove(current_powers[0])
             if len(perms) == num_of_permutations:
