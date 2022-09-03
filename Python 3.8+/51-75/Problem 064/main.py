@@ -22,9 +22,8 @@ def odd_sqrt_period_count_under(limit:int) -> int:
             res += 1
     return(res)
 
-
 def main()-> int:
-    return(odd_sqrt_period_count_under(10000))
+    return(odd_sqrt_period_count_under(13))
 
 if __name__=="__main__":
     from time import perf_counter
